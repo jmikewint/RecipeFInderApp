@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:recipe_finder/bottom_nav_btn.dart';
+import 'package:recipe_finder/constants.dart';
 import 'package:recipe_finder/size_config.dart';
 
 class FinalView extends StatefulWidget {
@@ -12,6 +13,30 @@ class FinalView extends StatefulWidget {
 
 class _FinalViewState extends State<FinalView> {
   int _currentIndex = 0;
+  late final PageController pageController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    pageController = PageController(initialPage: _currentIndex);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    pageController.dispose();
+    super.dispose();
+  }
+
+  void animateToPage(int page) {
+    pageController.animateToPage(
+      page,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.decelerate,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     AppSizes().initSsizes(context);
@@ -23,12 +48,22 @@ class _FinalViewState extends State<FinalView> {
           "Custom Bottom Navigation Bar",
           style: TextStyle(color: Colors.white),
         ),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: Stack(
           children: [
-            Positioned.fill(child: Container(color: Colors.deepPurpleAccent)),
-
+            Positioned.fill(
+              child: PageView(
+                controller: pageController,
+                children: screens,
+                onPageChanged: (value) {
+                  setState(() {
+                    _currentIndex = value;
+                  });
+                },
+              ),
+            ),
             Positioned(
               bottom: 0,
               right: 0,
@@ -69,6 +104,7 @@ class _FinalViewState extends State<FinalView> {
                 currentIndex: _currentIndex,
                 index: 0,
                 onPressed: (val) {
+                  animateToPage(val);
                   setState(() {
                     _currentIndex = val;
                   });
@@ -79,6 +115,7 @@ class _FinalViewState extends State<FinalView> {
                 currentIndex: _currentIndex,
                 index: 1,
                 onPressed: (val) {
+                  animateToPage(val);
                   setState(() {
                     _currentIndex = val;
                   });
@@ -89,6 +126,7 @@ class _FinalViewState extends State<FinalView> {
                 currentIndex: _currentIndex,
                 index: 2,
                 onPressed: (val) {
+                  animateToPage(val);
                   setState(() {
                     _currentIndex = val;
                   });
@@ -99,6 +137,7 @@ class _FinalViewState extends State<FinalView> {
                 currentIndex: _currentIndex,
                 index: 3,
                 onPressed: (val) {
+                  animateToPage(val);
                   setState(() {
                     _currentIndex = val;
                   });
