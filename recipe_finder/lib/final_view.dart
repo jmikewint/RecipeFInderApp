@@ -222,12 +222,12 @@ class _FinalViewState extends State<FinalView> {
               duration: const Duration(milliseconds: 300),
               curve: Curves.decelerate,
               left: animatedPositionedLeftValue(_currentIndex),
-              bottom: 4,
+              bottom: 7,
               child: Container(
-                    height: AppSizes.blockSizeHorizontal * 1.0,
+                    height: AppSizes.blockSizeHorizontal * .7,
                     width: AppSizes.blockSizeHorizontal * 8,
                     decoration: BoxDecoration(
-                      color: Colors.yellow,
+                      color: const Color.fromARGB(255, 255, 255, 255),
                       borderRadius: BorderRadius.circular(10)
                     ),
               ),

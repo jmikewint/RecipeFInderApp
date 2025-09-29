@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_finder/RecipesHomeScreen.dart';
 import 'package:recipe_finder/final_view.dart';
-import 'package:recipe_finder/test.dart';
+import 'package:recipe_finder/pages/home_page.dart';
+import 'package:recipe_finder/services.dart';
 
 
 void main() {
